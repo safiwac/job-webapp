@@ -4,13 +4,13 @@
  	<div class="form-group row">
 	  <label for="nom" class="col-sm-2 col-form-label">*  Votre Nom :</label>
 	  <div class="col-sm-10">
-	    <input class="form-control" type="text" id="nom" min="3" required type="text" data-error-msg="Must enter your name?" >
+	    <input class="form-control" type="text" id="nom" name="nom" placeholder="Nom" >
 	  </div>
 	</div>
 	 <div class="form-group row">
-	  <label for="prenom" class="col-sm-2 col-form-label">*  Votre Prenom :</label>
+	  <label for="prenom" class="col-sm-2 col-form-label">*  Votre Prénom :</label>
 	  <div class="col-sm-10">
-	    <input class="form-control" type="text"  id="prenom">
+	    <input class="form-control" type="text"  id="prenom" name="prenom" placeholder="Prénom">
 	  </div>
 	</div>	
     <div class="form-group row">
@@ -30,14 +30,14 @@
     <div class="form-group row">
       <label for="password" class="col-sm-2 col-form-label">*  Password</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control" id="password" placeholder="Password">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
       </div>
     </div>
     
     <div class="form-group row">
       <label for="cpassword" class="col-sm-2 col-form-label">*  Confirmez votre Password</label>
       <div class="col-sm-10">
-        <input type="password" class="form-control" id="cpassword" placeholder="Password">
+        <input type="password" class="form-control" name="cpassword" id="cpassword" placeholder="Password">
       </div>
     </div>
     <h1>Coordonnées</h1>
@@ -117,20 +117,27 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            fullName: {
+            nom: {
                 validators: {
                     notEmpty: {
-                        message: 'The full name is required and cannot be empty'
+                        message: 'Le nom est un champ obligatoire.'
+                    }
+                }
+            },
+            prenom: {
+                validators: {
+                    notEmpty: {
+                        message: 'Le prénom est un champ obligatoire.'
                     }
                 }
             },
             email: {
                 validators: {
                     notEmpty: {
-                        message: 'The email address is required and cannot be empty'
+                        message: 'L\'adresse email est un champ obligatoire.'
                     },
                     emailAddress: {
-                        message: 'The email address is not valid'
+                        message: 'Votre adresse email n\'est pas valide.'
                     }
                 }
             },
@@ -139,29 +146,27 @@ $(document).ready(function() {
                 validators: {
                     identical: {
                         field: 'email',
-                        message: 'The mail and its confirm are not the same'
+                        message: 'Votre adresse email de confirmation ne correspond pas'
                     }
                 }
             },
-            title: {
+
+            password: {
                 validators: {
-                    notEmpty: {
-                        message: 'The title is required and cannot be empty'
+                	notEmpty: {
+                        message: 'L\'adresse email est un champ obligatoire.'
                     },
-                    stringLength: {
-                        max: 100,
-                        message: 'The title must be less than 100 characters long'
+                    regexp: {
+                        regexp: /^[a-z]{8}/,
+                        message: 'Le password doit comporter 8 caracetres.'
                     }
                 }
             },
-            content: {
+            cpassword: {
                 validators: {
-                    notEmpty: {
-                        message: 'The content is required and cannot be empty'
-                    },
-                    stringLength: {
-                        max: 500,
-                        message: 'The content must be less than 500 characters long'
+                    identical: {
+                        field: 'password',
+                        message: 'Votre password de confirmation ne correspond pas'
                     }
                 }
             }

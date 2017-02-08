@@ -1,5 +1,6 @@
 package com.job.controler;
 
+import org.job.entity.model.Candidat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,10 @@ public class AppController {
 
 	@RequestMapping(value = { "/"}, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
-		return "home";
+		Candidat candidat = new Candidat();
+		candidat.setNom("zakariaiaiaiaiai");
+		 model.addAttribute("command",candidat);
+		return "inscription";
 	}
 
 	@RequestMapping(value = { "/products"}, method = RequestMethod.GET)
