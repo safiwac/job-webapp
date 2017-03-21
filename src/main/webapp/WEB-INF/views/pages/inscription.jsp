@@ -1,6 +1,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
-
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="container">
+
+  <a href="?mylocale=en">English </a> | <a href="?mylocale=de">German </a>
+  <h3> <spring:message code="user.title"/></h3>
+
   <form:form action="register" method="post" id="contactForm" class="form">
  	<h1>Nouveaux utilisateurs : inscrivez-vous maintenant</h1> 
  	<div class="form-group row">

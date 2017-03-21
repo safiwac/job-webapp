@@ -1,15 +1,21 @@
 package com.job.configuration;
 
+import java.util.Locale;
+
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
@@ -30,27 +36,24 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 	    TilesConfigurer tilesConfigurer = new TilesConfigurer();
 	    tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
 	    tilesConfigurer.setCheckRefresh(true);
+	    
 	    return tilesConfigurer;
 	}
 	
-//	 @Bean
-//	 public InternalResourceViewResolver viewResolver() {
-//			InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-//			resolver.setPrefix("/WEB-INF/jsp/");
-//			resolver.setSuffix(".jsp");
-//			return resolver;
-//		}
-//	 
-//	 @Override
-//	 public void addViewControllers(ViewControllerRegistry registry) {
-//	        registry.addViewController("/home").setViewName("home");
-//	        registry.addViewController("/").setViewName("home");
-//	        registry.addViewController("/hello").setViewName("hello");
-//	        registry.addViewController("/login").setViewName("login");
-//	        registry.addViewController("/403").setViewName("403");
-//	        registry.addViewController("/candidat").setViewName("candidat");
-//	     
-//	    }   
+	    @Bean
+	    public LocaleResolver localeResolver(){
+		CookieLocaleResolver resolver = new CookieLocaleResolver();
+		resolver.setDefaultLocale(new Locale("en"));
+		resolver.setCookieName("myLocaleCookie");
+		resolver.setCookieMaxAge(4800);
+		return resolver;
+	    }
+	    @Override
+	    public void addInterceptors(InterceptorRegistry registry) {
+		LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
+		interceptor.setParamName("mylocale");
+		registry.addInterceptor(interceptor);
+	    }
 
 	/**
      * Configure ViewResolvers to deliver preferred views.
@@ -70,11 +73,19 @@ public class AppConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
     
+//	@Bean
+//	public ResourceBundleMessageSource messageSource() {
+//		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
+//		rb.setBasenames(new String[] { "messages/messages", "messages/validation" });
+//		return rb;
+//	}
+
 	@Bean
-	public ResourceBundleMessageSource messageSource() {
-		ResourceBundleMessageSource rb = new ResourceBundleMessageSource();
-		rb.setBasenames(new String[] { "messages/messages", "messages/validation" });
-		return rb;
+	public MessageSource messageSource() {
+	    ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+	    messageSource.setBasename("/i18/usermsg");
+	    messageSource.setDefaultEncoding("UTF-8");
+	    return messageSource;
 	}
 
     

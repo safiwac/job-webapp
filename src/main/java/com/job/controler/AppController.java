@@ -1,5 +1,11 @@
 package com.job.controler;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.job.entity.model.Candidat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -29,5 +35,27 @@ public class AppController {
 	@RequestMapping(value = { "/contactus"}, method = RequestMethod.GET)
 	public String contactUsPage(ModelMap model) {
 		return "contactus";
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected Map referenceData(HttpServletRequest request) throws Exception {
+
+		Map referenceData = new HashMap();
+
+		Map<String,String> country = new LinkedHashMap<String,String>();
+		country.put("US", "United Stated");
+		country.put("CHINA", "China");
+		country.put("SG", "Singapore");
+		country.put("MY", "Malaysia");
+		referenceData.put("countryList", country);
+
+		Map<String,String> javaSkill = new LinkedHashMap<String,String>();
+		javaSkill.put("Hibernate", "Hibernate");
+		javaSkill.put("Spring", "Spring");
+		javaSkill.put("Apache Wicket", "Apache Wicket");
+		javaSkill.put("Struts", "Struts");
+		referenceData.put("javaSkillsList", javaSkill);
+
+		return referenceData;
 	}
 }
