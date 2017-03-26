@@ -14,9 +14,9 @@
 	  </div>
 	</div>
 	 <div class="form-group row">
-	  <label for="prenom" class="col-sm-2 col-form-label">*  Votre Prénom :</label>
+	  <label for="prenom" class="col-sm-2 col-form-label">*  Votre Prenom :</label>
 	  <div class="col-sm-10">
-	    <form:input class="form-control" path="prenom" type="text"  id="prenom" name="prenom" placeholder="Prénom"/>
+	    <form:input class="form-control" path="prenom" type="text"  id="prenom" name="prenom" placeholder="Prenom"/>
 	  </div>
 	</div>	
     <div class="form-group row">
@@ -46,10 +46,10 @@
         <input type="password" class="form-control"  name="cpassword" id="cpassword" placeholder="Password">
       </div>
     </div>
-    <h1>Coordonnées</h1>
+    <h1>Coordonnï¿½es</h1>
     
     <div class="form-group row">
-	  <label for="telephone" class="col-sm-2 col-form-label">Téléphone</label>
+	  <label for="telephone" class="col-sm-2 col-form-label">Tï¿½lï¿½phone</label>
 	  <div class="col-sm-10">
 	    <form:input class="form-control" type="text" path="telephone" id="telephone"/>
 	  </div>
@@ -144,7 +144,7 @@ $(document).ready(function() {
             prenom: {
                 validators: {
                     notEmpty: {
-                        message: 'Le prénom est un champ obligatoire.'
+                        message: 'Le prï¿½nom est un champ obligatoire.'
                     }
                 }
             },

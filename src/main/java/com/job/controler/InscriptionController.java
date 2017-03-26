@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.job.entity.model.Candidat;
+import org.job.entity.model.Pays;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,9 @@ public class InscriptionController {
 	public String homePage(ModelMap model) {
 		Candidat candidat = new Candidat();
 		candidat.setNom("zakariaiaiaiaiai");
+		Pays pays = new Pays();
+		pays.setNom("dkhhdfjhdgfjhdfghjdfghdf");
+		candidat.setPays(pays);
 		 model.addAttribute("command",candidat);
 		return "inscription";
 	}

@@ -12,7 +12,7 @@
 		<java.version>1.7</java.version>
 		<spring.platform-bom.version>2.0.0.RELEASE</spring.platform-bom.version>
 		<common.version>0.0.1-SNAPSHOT</common.version>
-		<entity.version>0.0.1-SNAPSHOT</entity.version>
+		<service.version>0.0.1-SNAPSHOT</service.version>
   </properties>
   
   
@@ -38,9 +38,9 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>job-entity</groupId>
-  			<artifactId>job-entity</artifactId>
-  			<version>${entity.version}</version>
+			<groupId>com.service</groupId>
+  			<artifactId>job.service</artifactId>
+  			<version>${service.version}</version>
 		</dependency>
 		<!-- Spring -->
 		<dependency>
@@ -85,6 +85,48 @@
 		<dependency>
 		    <groupId>javax.servlet</groupId>
 		    <artifactId>jstl</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		
+				<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+	        <groupId>org.springframework</groupId>
+	        <artifactId>spring-context</artifactId>
+    	</dependency>
+    	<dependency>
+	       <groupId>org.hibernate</groupId>
+	       <artifactId>hibernate-entitymanager</artifactId>
+   		</dependency>
+   		<dependency>
+		   <groupId>org.hibernate</groupId>
+		   <artifactId>hibernate-core</artifactId>
+		</dependency>
+		
+		<dependency>
+    <groupId>org.eclipse.persistence</groupId>
+    <artifactId>javax.persistence</artifactId>
+    <version>2.1.0</version>
+</dependency>
+			 
+		<!-- Spring Data JPA -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-jpa</artifactId>
 		</dependency>
 		
 	</dependencies>
