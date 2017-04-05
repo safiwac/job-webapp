@@ -2,6 +2,7 @@ package com.job.configuration;
 
 import java.util.Locale;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,6 +32,9 @@ import com.job.formatter.PaysFormatter;
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.service","com.job"})
 public class AppConfig extends WebMvcConfigurerAdapter{
+	
+		@Autowired
+		PaysFormatter paysFormatter;
 
 		/**
 	     * Configure TilesConfigurer.
@@ -84,10 +88,10 @@ public class AppConfig extends WebMvcConfigurerAdapter{
 		    return messageSource;
 		}
 	    
+	    
 	    @Override
 	    public void addFormatters (FormatterRegistry registry) {
-		    PaysFormatter addressFormatter = new PaysFormatter();
-		    registry.addFormatter(addressFormatter);
+		    registry.addFormatter(paysFormatter);
 	    }    
 }
 

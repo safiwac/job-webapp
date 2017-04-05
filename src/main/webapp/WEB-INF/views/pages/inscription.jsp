@@ -2,10 +2,11 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="container">
 
+  <spring:url value="/inscription" var="addCandidat" />
   <a href="?mylocale=en">English </a> | <a href="?mylocale=de">German </a>
   <h3> <spring:message code="user.title"/></h3>
 
-  <form:form action="register" method="post" id="contactForm" class="form">
+  <form:form  method="post" id="contactForm" class="form" modelAttribute="candidatForm" action="${addCandidat}">
  	<h1>Nouveaux utilisateurs : inscrivez-vous maintenant</h1> 
  	<div class="form-group row">
 	  <label for="nom" class="col-sm-2 col-form-label">*  Votre Nom :</label>
@@ -62,13 +63,6 @@
 	</div>	
  
  
- 
- 	<div class="form-group row">
-	  <label for="pays" class="col-sm-2 col-form-label">Pays</label>
-	  <div class="col-sm-10">
-	    <form:input class="form-control" type="text"  path="pays" id="pays"/>
-	  </div>
-	</div>
 	<div class="form-group row">
 	  <label for="ville" class="col-sm-2 col-form-label">Ville</label>
 	  <div class="col-sm-10">
