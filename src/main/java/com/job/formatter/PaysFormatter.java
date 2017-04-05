@@ -13,7 +13,7 @@ public class PaysFormatter implements Formatter<Pays> {
 
 	@Override
 	public String print(Pays arg0, Locale arg1) {
-		return "zakakaakaka .................... "+arg0.getNom();
+		return arg0.getNom();
 	}
 
 	@Override

@@ -17,8 +17,8 @@ import com.zaxxer.hikari.HikariDataSource;
  * @author EL HAHY Zakaria
  */
 
-//@Configuration
-public class DataSourceConfiguration {
+@Configuration
+public class DataSourceConfiguratione {
 	
 	@Autowired
 	private Environment env;
@@ -38,9 +38,7 @@ public class DataSourceConfiguration {
 		dataSource.setURL(env.getProperty("jdbc.url"));
 		dataSource.setUser(env.getRequiredProperty("jdbc.username"));
 		dataSource.setPassword(env.getRequiredProperty("jdbc.password"));
-		//dataSource.setDriverType(env.getRequiredProperty("jdbc.driver"));
 		config.setDataSource(dataSource);
-		//TODO configure pool parameters
 		return config; 	
 	}
 

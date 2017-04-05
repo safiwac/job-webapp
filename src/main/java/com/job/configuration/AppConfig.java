@@ -27,7 +27,7 @@ import com.job.formatter.PaysFormatter;
  */
 @Configuration
 @PropertySource(value = { "classpath:job-userauth-local.properties" }, ignoreResourceNotFound = true)
-@Import(value = { PersistanceConfiguration.class })
+@Import(value = { PersistanceConfiguratione.class,DataSourceConfiguratione.class })
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.service","com.job"})
 public class AppConfig extends WebMvcConfigurerAdapter{

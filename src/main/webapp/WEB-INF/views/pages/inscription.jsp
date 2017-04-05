@@ -46,10 +46,10 @@
         <input type="password" class="form-control"  name="cpassword" id="cpassword" placeholder="Password">
       </div>
     </div>
-    <h1>Coordonn�es</h1>
+    <h1>Coordonnées</h1>
     
     <div class="form-group row">
-	  <label for="telephone" class="col-sm-2 col-form-label">T�l�phone</label>
+	  <label for="telephone" class="col-sm-2 col-form-label">Téléphone</label>
 	  <div class="col-sm-10">
 	    <form:input class="form-control" type="text" path="telephone" id="telephone"/>
 	  </div>
@@ -87,13 +87,9 @@
     <div class="form-group row">
 	    <label for="exampleSelect1"  class="col-sm-2 col-form-label">Example select</label>
 	    <div class="col-sm-10">
-		    <select class="form-control" id="exampleSelect1">
-		      <option>1</option>
-		      <option>2</option>
-		      <option>3</option>
-		      <option>4</option>
-		      <option>5</option>
-		    </select>
+		    <form:select class="form-control" path="pays"  id="exampleSelect1">
+		    	<form:options items="${listcountry}" />
+		    </form:select>
 	    </div>
   </div>
 
@@ -144,7 +140,7 @@ $(document).ready(function() {
             prenom: {
                 validators: {
                     notEmpty: {
-                        message: 'Le pr�nom est un champ obligatoire.'
+                        message: 'Le prénom est un champ obligatoire.'
                     }
                 }
             },
