@@ -3,7 +3,7 @@
 <div class="container">
 
   <spring:url value="/inscription" var="addCandidat" />
-  <a href="?mylocale=en">English </a> | <a href="?mylocale=de">German </a>
+	<%@include file="includes/internationalisation.jsp" %>
   <h3> <spring:message code="user.title"/></h3>
 
   <form:form  method="post" id="contactForm" class="form" modelAttribute="candidatForm" action="${addCandidat}">
