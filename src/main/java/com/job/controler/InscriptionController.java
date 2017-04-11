@@ -2,6 +2,8 @@ package com.job.controler;
 
 import org.job.entity.model.Candidat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,6 +26,24 @@ public class InscriptionController {
 
 	@Autowired
 	ICandidatManager iCandidatManager;
+	
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+	public String homePage(ModelMap model) {
+		model.addAttribute("greeting", "Hi, Welcome to mysite");
+		return "welcome";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String loginPage() {
+		return "login";
+	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String adminPage(ModelMap model) {
+		model.addAttribute("user", getPrincipal());
+		return "admin";
+	}
+
 
 	@RequestMapping(value = { "/inscription" }, method = RequestMethod.GET)
 	public String getInscription(Candidat candidat, Model model) {
@@ -49,6 +69,18 @@ public class InscriptionController {
 	@RequestMapping(value = { "/contactus" }, method = RequestMethod.GET)
 	public String contactUsPage(ModelMap model) {
 		return "contactus";
+	}
+	
+	private String getPrincipal(){
+		String userName = null;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+			userName = ((UserDetails)principal).getUsername();
+		} else {
+			userName = principal.toString();
+		}
+		return userName;
 	}
 
 }
