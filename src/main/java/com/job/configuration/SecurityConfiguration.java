@@ -46,15 +46,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    authenticationProvider.setPasswordEncoder(passwordEncoder());
 	    return authenticationProvider;
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	  http.authorizeRequests()
 	  	.antMatchers("/", "/home").permitAll()
 	  	.antMatchers("/admin/**","/newuser").access("hasRole('ADMIN')")
 	  	.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-	  	.and().formLogin().loginPage("/login")
-	  	.usernameParameter("ssoId").passwordParameter("password")
+	  	.and()
+	  		.formLogin().loginPage("/login")
+	  		.usernameParameter("ssoId").passwordParameter("password")
+	  	.and()
+			.logout().logoutSuccessUrl("/logout")
 	  	.and().csrf()
 	  	.and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}

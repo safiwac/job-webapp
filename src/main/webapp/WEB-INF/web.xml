@@ -12,4 +12,9 @@
   <error-page>
     <location>/errors</location>
   </error-page>
+  
+    <session-config>
+      <!-- in minutes -->
+      <session-timeout>1</session-timeout>
+   </session-config>
 </web-app>

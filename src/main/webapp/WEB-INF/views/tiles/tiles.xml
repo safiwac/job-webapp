@@ -19,7 +19,7 @@
    </definition>  
 
    <definition name="confirmationInscription" extends="base-definition">  
-       <put-attribute name="title" value="Confirmation" />  
+       <put-attribute name="title" value="confirmation" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/confirmationInscription.jsp" />  
    </definition>  
    
@@ -27,7 +27,7 @@
        <put-attribute name="title" value="welcome" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/welcome.jsp" />  
    </definition>  
-   
+	
 	<definition name="login" extends="base-definition">  
        <put-attribute name="title" value="login" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  

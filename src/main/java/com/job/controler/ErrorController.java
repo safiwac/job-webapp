@@ -18,7 +18,7 @@ public class ErrorController {
     @RequestMapping( method = RequestMethod.GET)
     public ModelAndView renderErrorPage(HttpServletRequest httpRequest) {
          
-        ModelAndView errorPage = new ModelAndView("errors");
+    	ModelAndView errorPage = new ModelAndView("errors");
         String errorMsg = "";
         int httpErrorCode = getErrorCode(httpRequest);
  

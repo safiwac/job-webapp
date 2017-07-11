@@ -23,12 +23,13 @@ import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.job.formatter.PaysFormatter;
+import com.service.config.MailSenderConfiguration;
 /*
  * @author EL HAHY Zakaria
  */
 @Configuration
-@PropertySource(value = { "classpath:job-userauth-local.properties" }, ignoreResourceNotFound = true)
-@Import(value = { PersistanceConfiguratione.class,DataSourceConfiguratione.class })
+@PropertySource(value = { "classpath:job-userauth-local.properties","classpath:configMail.properties" }, ignoreResourceNotFound = true)
+@Import(value = { PersistanceConfiguratione.class,DataSourceConfiguratione.class,MailSenderConfiguration.class })
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.service","com.job"})
 public class AppConfig extends WebMvcConfigurerAdapter{
