@@ -31,7 +31,8 @@ import com.service.config.MailSenderConfiguration;
 @PropertySource(value = { "classpath:job-userauth-local.properties","classpath:configMail.properties" }, ignoreResourceNotFound = true)
 @Import(value = { PersistanceConfiguratione.class,DataSourceConfiguratione.class,MailSenderConfiguration.class })
 @EnableWebMvc
-@ComponentScan(basePackages = {"com.service","com.job"})
+@ComponentScan(basePackages = {"com.service","com.job",
+		"com.job.controler.inscription"})
 public class AppConfig extends WebMvcConfigurerAdapter{
 	
 		@Autowired

@@ -47,10 +47,10 @@
         <input type="password" class="form-control"  name="cpassword" id="cpassword" placeholder="Password">
       </div>
     </div>
-    <h1>Coordonnées</h1>
+    <h1>Coordonnees</h1>
     
     <div class="form-group row">
-	  <label for="telephone" class="col-sm-2 col-form-label">Téléphone</label>
+	  <label for="telephone" class="col-sm-2 col-form-label">Telephone</label>
 	  <div class="col-sm-10">
 	    <form:input class="form-control" type="text" path="telephone" id="telephone"/>
 	  </div>
