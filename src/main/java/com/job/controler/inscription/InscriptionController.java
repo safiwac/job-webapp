@@ -61,23 +61,23 @@ public class InscriptionController {
 		return "confirmationInscription";
 	}
 
-	
+
+	// confirmationInscription 
+//	@RequestMapping(value = { "/confirmationInscription" }, method = RequestMethod.GET)
+//	public String getConformationInscription(@ModelAttribute(GlobalConstant.CANDIDAT_CONNECTED) Candidat candidated, Model model) {
+//		if(Objects.nonNull(candidated))
+//			System.out.println(candidated.getNom());
+//		else
+//			System.out.println("non null");
+//		return "confirmationInscription";
+//	}
+
 	@RequestMapping(value = { "/confirmationInscription" }, method = RequestMethod.GET)
-	public String getConformationInscription(@ModelAttribute(GlobalConstant.CANDIDAT_CONNECTED) Candidat candidated, Model model) {
-		if(Objects.nonNull(candidated))
-			System.out.println(candidated.getNom());
-		else
-			System.out.println("non null");
+	public String getConformationInscription( Model model) {
+		
 		return "confirmationInscription";
 	}
 
-
-//	@ModelAttribute("cadidatConnected")
-//    public Candidat getCandidat (HttpServletRequest request) {
-//        Candidat c =  new Candidat();
-//        c.setNom("zakaria");
-//        return c;
-//    }
 
 
 }
